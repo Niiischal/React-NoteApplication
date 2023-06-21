@@ -13,7 +13,7 @@ router.post('/createuser', [
     body('name','Enter valid name').isLength({ min: 3}),
     body('password').isLength({ min: 5}),
 ],async (req, res)=>{
-    // If there are errors, return and the errors
+    // If there are errors, return the errors
     const result = validationResult(req);
     if (!result.isEmpty()) {
         return res.send({ errors: result.array() });
@@ -40,11 +40,48 @@ router.post('/createuser', [
     }
     const authenticationToken = jwt.sign(data, JWT_SECRET_STRING);
     res.json(authenticationToken)
-    
+
 } catch(error){
     console.error(error.message);
     res.status(500).send("some error occured");
 }
 })
 
+// Authenticate a User using: POST "api/authentication/login". No login required
+router.post('/login', [
+    body('email','Enter valid email').isEmail(),
+    body('password', 'Password cannot be blank').exists()
+],async (req, res)=>{
+    // If there are errors, return the errors
+    const result = validationResult(req);
+    if (!result.isEmpty()) {
+        return res.send({ errors: result.array() });
+    } 
+
+    const {email, password}=req.body;
+    try{
+        let user = await User.findOne({email})
+        if(!user){
+            return res.send({ errors: "Please login with correct credentials." });
+        }
+
+        const passwordCompare = await bcrypt.compare(password, user.password);
+        if(!passwordCompare){
+            return res.send({ errors: "Please login with correct credentials." });
+        }
+        
+        const data={
+            user:{
+                id: user.id
+            }
+        }
+        const authenticationToken = jwt.sign(data, JWT_SECRET_STRING);
+        res.json(authenticationToken)
+
+    }catch(error){
+        console.error(error.message);
+        res.status(500).send("Error");
+    }
+
+})
 module.exports=router
