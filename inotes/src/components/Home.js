@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react';
+import NoteContext from '../context/notes/NoteContext';
 
 const Home = () => {
+  const context = useContext(NoteContext);
+  const {notes, setNotes} = context;
   return (
     <div className='container'>
       <h1 style={{textAlign:"center", fontSize:"1.5rem"}}className="my-3">Add Notes: </h1>
@@ -19,7 +22,9 @@ const Home = () => {
   </div>
   <button type="submit" className="btn btn-primary hover:text-white text-black">Sign in</button>
 </form>
+<h1 style={{textAlign:"center", fontSize:"1.5rem"}}className="my-3">Your Notes: </h1>
     </div>
+    
   )
 }
 
