@@ -5,4 +5,8 @@ const NoteState =  (props)=>{
         <NoteContext.Provider>
             {props.children}
         </NoteContext.Provider>
+    )
 }
+
+
+export default NoteState;
