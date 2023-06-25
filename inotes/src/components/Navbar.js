@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
   return (
@@ -25,8 +25,10 @@ const Navbar = () => {
         </div>
         <div className="hidden sm:ml-6 sm:block">
           <div className="flex space-x-4">
-            <Link to="/" className="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</Link>
-            <Link to="/about" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About</Link>
+            <NavLink to="/" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" style={({ isActive }) => ({ 
+                            color: isActive ? 'Orange' : 'white' })}>Home </NavLink>
+            <NavLink to="/about" className="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" style={({ isActive }) => ({ 
+                            color: isActive ? 'Orange' : 'white' })}>About</NavLink>
           </div>
         </div>
       </div>
@@ -35,8 +37,8 @@ const Navbar = () => {
 
   <div className="sm:hidden" id="mobile-menu">
     <div className="space-y-1 px-2 pb-3 pt-2">
-      <Link to="/" className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" aria-current="page">Home</Link>
-      <Link to="/about" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">About</Link>
+      <NavLink to="/" className="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium" >Home</NavLink>
+      <NavLink to="/about" className="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium">About</NavLink>
     </div>
   </div>
 </nav>
