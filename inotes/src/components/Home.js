@@ -6,13 +6,13 @@ const Home = () => {
       <h1 style={{textAlign:"center", fontSize:"1.5rem"}}className="my-3">Add Notes: </h1>
       <form>
   <div className="row mb-3">
-    <label for="inputEmail3" className="col-sm-2 col-form-label">Email</label>
+    <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Email</label>
     <div className="col-sm-10">
       <input type="email" className="form-control" id="inputEmail3"/>
     </div>
   </div>
   <div className="row mb-3">
-    <label for="inputPassword3" className="col-sm-2 col-form-label">Password</label>
+    <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Password</label>
     <div className="col-sm-10">
       <input type="password" className="form-control" id="inputPassword3"/>
     </div>
