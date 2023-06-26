@@ -34,7 +34,7 @@ const AddNotes = () => {
       <input type="text" className="form-control" id="description" name='description' onChange={onChange}/>
     </div>
   </div>
-  <button type="submit" className="btn btn-primary hover:text-white text-black" onClick={handleClick}> Submit </button>
+  <button type="submit" className="btn btn-primary hover:text-white text-black" onClick={handleClick}> Add Notes </button>
 </form>
     </div>
     </div>
